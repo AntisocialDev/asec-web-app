@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "asec-web-app": {
+      "hosting": {
+        "asec-web-app": [
+          "asec-web-app"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "asec-web-app"
+  }
+}

@@ -1,0 +1,15 @@
+<main class="w-full">
+    <div class="px-5 flex items-center gap-2 bg-black w-full h-[40px]">
+        <a href="https://web.facebook.com/alfredsusan57" target="_blank"><img width="25" alt="facebook image" src="/assets/images/facebook.svg"></a>
+        <a href="https://www.instagram.com/alfredsusaneventcenter_/" target="_blank"><img width="25" alt="instagram image" src="/assets/images/instagram.svg"></a>
+    </div>
+    <nav id="navbar" class="flex items-center justify-between bg-[#ffffff] w-full h-[85px]" (scroll)="onScroll()" [ngClass]="navbarFixed? 'fixed': 'notfixed'">
+        <img width="200" class="ml-5" src="/assets/logo/logo-no-background.svg">
+        <div id="navbar" class="flex h-full text-center gap-10 list-none font-bold text-xl nav-links">
+            <li *ngFor="let link of navLinks" [routerLink]="[link.link]" routerLinkActive="active-nav-link">{{link.title}}</li>
+        </div>
+        <button class="flex items-center rounded-none bg-[#3F00FF] text-2xl text-white font-bold h-full p-5">
+            BOOK EVENT
+        </button>
+    </nav>
+</main>
