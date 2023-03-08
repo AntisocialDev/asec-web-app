@@ -1,1 +1,159 @@
 /* You can add global styles to this file, and also import other style files */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.75rem;
+}
+
+.odd {
+    background-color: #E5E4E2;
+}
+
+.home-banner {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    padding: 200px 20px;
+    align-items: center;
+    background: linear-gradient(0deg, rgba(34, 139, 34, 0.4), rgba(34, 139, 34, 0.4)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.hotels-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+    text-align: center;
+    padding: 200px 20px;
+    color: #ffffff;
+    height: 500px;
+    background: linear-gradient(0deg, rgba(34, 139, 34, 0.4), rgba(34, 139, 34, 0.4)), url('https://m.hotels.ng/img/h999567/kapital-hotel-999567-26.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.contact-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+    text-align: center;
+    padding: 200px 20px;
+    color: #ffffff;
+    height: 500px;
+    background: linear-gradient(0deg, rgba(34, 139, 34, 0.4), rgba(34, 139, 34, 0.4)), url('https://images.unsplash.com/photo-1596524430615-b46475ddff6e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.galleries-banner {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    padding: 200px 20px;
+    align-items: center;
+    background: linear-gradient(0deg, rgba(34, 139, 34, 0.4), rgba(34, 139, 34, 0.4)), url('https://lh3.googleusercontent.com/p/AF1QipPqlETkSaKck3KYEApJUbpz88ZVxqLE91nbbi15=s0');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.did-yk-div {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 350px;
+    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://images.unsplash.com/photo-1526092817387-8f07b2904e48?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    background-position: center;
+}
+
+.location-div {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 350px;
+    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://scontent.flos5-1.fna.fbcdn.net/v/t39.30808-6/275800572_1106515986804666_6728567291165943815_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=8bfeb9&_nc_eui2=AeEHjayCd63PRK6F6fVx3XWJVKz0db4f071UrPR1vh_TvawH8yJN7Ho-gJKE7LVVUpMs5tBgoyfGJdENqnCW-tWv&_nc_ohc=zhNW9humhTAAX8qicGe&_nc_zt=23&_nc_ht=scontent.flos5-1.fna&oh=00_AfAU3DsPM7Gt3RnLtRSubJwDYQhlNyEqg0vHp_zNrXD11Q&oe=640C9859');
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    background-position: center;
+}
+
+.nav-links {
+    li {
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    & :hover {
+        color: #3F00FF;
+        border-bottom: 3px solid #3F00FF;
+    }
+}
+
+.active-nav-link {
+    color: #3F00FF;
+    border-bottom: 3px solid #3F00FF;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    label {
+        font-size: 18px;
+    }
+    input {
+        width: 100%;
+        height: 40px;
+        color: #000000;
+        padding: 10px;
+    }
+    textarea {
+        height: 200px;
+        color: #000000;
+        padding: 10px;
+    }
+}
+
+.form-div {
+    color: #ffffff;
+    background: url('https://images.unsplash.com/photo-1613045947970-324867b13be9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.fixed {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    transition: 0.2s linear;
+}
+
+.nofixed {
+    position: static;
+    transition: 0.2s linear;
+    top: -50px;
+}

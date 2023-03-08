@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'asec-web-app';
+
+
+  constructor(){
+  }
 }

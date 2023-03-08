@@ -97,8 +97,21 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "asec-web-app:build:production",
+            "firebaseProject": "asec-web-app",
+            "firebaseHostingSite": "asec-web-app"
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

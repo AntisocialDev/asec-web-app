@@ -1,0 +1,11 @@
+<main>
+    <div class="galleries-banner">
+        <p class="text-7xl">CHECK OUT SOME EVENTS WE'VE HOSTED</p>
+    </div>
+
+    <div class="px-[150px]">
+        <div *ngFor="let image of imageList" class="grid grid-cols-5 gap-10">
+            <img src="{{image.imageUrl}}">
+        </div>
+    </div>
+</main>
