@@ -7,10 +7,8 @@ import { Component } from '@angular/core';
 })
 export class GalleriesComponent {
 
-  imageList = [
-    {
-      imageUrl: 'https://lh3.googleusercontent.com/p/AF1QipODftwX7OBN3e4HL7RNEOAaX3a6_-PVByEB2ANV=s0',
-    }
+  imageList?: any[] = [
+    
   ];
   constructor(){
 

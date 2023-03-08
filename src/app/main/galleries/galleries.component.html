@@ -1,4 +1,4 @@
-<main>
+<main *ngIf="imageList!.length>0; else empty">
     <div class="galleries-banner">
         <p class="text-7xl">CHECK OUT SOME EVENTS WE'VE HOSTED</p>
     </div>
@@ -8,4 +8,13 @@
             <img src="{{image.imageUrl}}">
         </div>
     </div>
+
+
 </main>
+
+
+<ng-template #empty>
+    <div class="flex my-20 items-center justify-center">
+        <p class="text-7xl text-center">Coming Soon!</p>
+    </div>
+</ng-template>
