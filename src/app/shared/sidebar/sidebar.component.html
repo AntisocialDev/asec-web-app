@@ -1,0 +1,5 @@
+<main id="sidebar" class="h-screen fixed absolute z-[1] md:hidden" [ngStyle]="{'paddingTop': paddingValue, 'display': menuOpen == true?'block': 'none'}" (scroll)="onScroll()">
+    <div class="flex flex-col items-center py-5 text-3xl gap-10 w-screen h-full opacity-[0.95] bg-white list-none font-bold border-t-2 border-[#3F00FF]">
+        <li *ngFor="let link of navLinks" [routerLink]="[link.link]" (click)="onNavClick()">{{link.title}}</li>
+    </div>
+</main>

@@ -1,9 +1,9 @@
 <main>
-    <div class="hotels-banner">
+    <div class="hotels-banner h-[350px] lg:h-[450px]">
         <p class="text-7xl">CHECK IN. THEN, ATTEND</p>
     </div>
 
-    <div class="px-[150px]">
+    <div class="px-[30px] xl:px-[150px]">
         <div class="my-[70px]">
             <p class="text-lg font-bold">
                 There are several Hotels in and within Ijebu-ode, located just minutes from us. You can experience all the fun and stay close to the event
@@ -21,9 +21,9 @@
             </div>
             <div *ngFor="let hotel of hotelList; let i = index; let odd = odd; let even = even" class="my-20">
                 <div class="flex items-center gap-10 font-bold" [ngClass]="{odd: odd}">
-                    <img class="w-[250px] h-[250px]" src="{{hotel.image}}">
-                    <div class="flex flex-col gap-5">
-                        <p class="text-4xl">{{hotel.name | uppercase }}</p>
+                    <img class="hidden md:flex w-[200px] h-[200px] lg:w-[250px] lg:h-[250px]" src="{{hotel.image}}">
+                    <div class="flex flex-col gap-5 m-5">
+                        <p class="text-2xl lg:text-4xl">{{hotel.name | uppercase }}</p>
                         <p>{{hotel.address}}</p>
                         <a href="{{hotel.href}}" target="_blank">
                             <p class="py-5 border-b-8 text-[#3F00FF] border-[#3F00FF] border-solid w-max">CHECK OUT</p>

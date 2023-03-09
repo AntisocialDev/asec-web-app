@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component,Input,Output,EventEmitter,OnChanges, HostListener, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -7,45 +7,44 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss'],
   
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnChanges {
 
   navbarFixed: boolean = false;
-  activeLink: string = '';
+  menuOpen: boolean = false;
 
+  @Output() menuOpenEmmiter: EventEmitter<boolean> = new EventEmitter(); 
+  @Input() navClicked: any = false;
   navLinks = [ 
     {
       title: 'HOME',
       link: '/main/home',
-      active: false,
     },
     {
       title: 'ABOUT US',
       link: '/main/about-us',
-      active: false,
     },
     {
       title: 'GALLERIES',
       link: '/main/galleries',
-      active: false,
+      
     },
     {
       title: 'HOTELS',
       link: '/main/hotels',
-      active: false,
     },
     {
       title: 'CONTACT',
       link: '/main/contact',
-      active: false,
     },
     {
       title: 'PARKING',
       link: '/main/parking',
-      active: false,
     },
   ]
 
-  
+  constructor(){
+  }
+
 
   @HostListener('window:scroll', ['$event'])
   onScroll(){
@@ -54,6 +53,22 @@ export class NavbarComponent {
     }else{
       this.navbarFixed = false;
     }
+  }
+
+  
+
+  onNavClick(){
+   if(this.menuOpen){
+    this.menuOpen = false;
+    this.menuOpenEmmiter.emit(this.menuOpen);
+   }else{
+    this.menuOpen = true
+    this.menuOpenEmmiter.emit(this.menuOpen);
+   }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.menuOpen = this.navClicked;
   }
   
 }
