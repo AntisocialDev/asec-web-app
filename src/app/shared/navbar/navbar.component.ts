@@ -24,7 +24,7 @@ export class NavbarComponent implements OnChanges {
       link: '/main/about-us',
     },
     {
-      title: 'GALLERIES',
+      title: 'GALLERY',
       link: '/main/galleries',
       
     },

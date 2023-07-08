@@ -38,6 +38,11 @@ export class SidebarComponent implements OnInit {
       title: 'PARKING',
       link: '/main/parking',
     },
+
+    {
+      title: 'BOOK EVENT',
+      link: '/main/book-event'
+    }
   ];
 
   constructor(private route: Router) {}

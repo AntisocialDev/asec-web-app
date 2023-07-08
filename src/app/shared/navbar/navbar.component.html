@@ -7,11 +7,11 @@
         <img class=" w-[140px] lg:w-[170px] xl:w-[200px] ml-5" src="/assets/logo/logo-no-background.svg">
         <div id="navbar" class="flex h-full text-center hidden md:flex gap-5 lg:gap-10 list-none font-bold  md:text-sm lg:text-md xl:text-xl nav-links">
             <li *ngFor="let link of navLinks" [routerLink]="[link.link]" routerLinkActive="active-nav-link">{{link.title}}</li>
-            <button class="block lg:hidden lg:block flex items-center rounded-none bg-[#3F00FF] text-md text-white font-bold h-full p-2">
+            <button type [routerLink]="['book-event']" class="flex lg:hidden lg:block flex items-center rounded-none bg-[#3F00FF] text-md text-white font-bold h-full p-2">
                 BOOK EVENT
             </button>
         </div>
-        <button class="hidden lg:block flex items-center rounded-none bg-[#3F00FF] text-2xl text-white font-bold h-full p-5">
+        <button [routerLink]="['book-event']" class="hidden lg:block flex items-center rounded-none bg-[#3F00FF] text-2xl text-white font-bold h-full p-5">
             BOOK EVENT
         </button>
         <input type="checkbox" id="ham-menu">

@@ -7,6 +7,7 @@ import { ContactComponent } from './contact/contact.component';
 import { GalleriesComponent } from './galleries/galleries.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ParkingComponent } from './parking/parking.component';
+import { BookEventComponent } from './book-event/book-event.component';
 
 const routes: Routes = [
   { 
@@ -19,6 +20,7 @@ const routes: Routes = [
       {path: 'galleries', component: GalleriesComponent},
       {path: 'about-us', component: AboutUsComponent},
       {path: 'parking', component: ParkingComponent},
+      {path: 'book-event', component: BookEventComponent},
     ]
   }
 ];

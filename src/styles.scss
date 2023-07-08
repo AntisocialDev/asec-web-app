@@ -4,6 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+@import '~animate.css/animate.min.css';
 body,
 html {
     font-family: 'Space Grotesk', sans-serif;
@@ -149,7 +150,7 @@ label[for="ham-menu"] {
     color: #ffffff;
     padding: 200px 20px;
     align-items: center;
-    background: linear-gradient(0deg, rgba(34, 139, 34, 0.4), rgba(34, 139, 34, 0.4)), url('https://lh3.googleusercontent.com/p/AF1QipPqlETkSaKck3KYEApJUbpz88ZVxqLE91nbbi15=s0');
+    background: linear-gradient(0deg, rgba(34, 139, 34, 0.4), rgba(34, 139, 34, 0.4)), url('/assets/images/asec-building.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -187,6 +188,7 @@ label[for="ham-menu"] {
         display: flex;
         flex-direction: row;
         align-items: center;
+        outline: none;
     }
     & :hover {
         color: #3F00FF;

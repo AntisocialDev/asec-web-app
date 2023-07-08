@@ -1,11 +1,11 @@
 <main *ngIf="imageList!.length>0; else empty">
     <div class="galleries-banner">
-        <p class="text-7xl">CHECK OUT SOME EVENTS WE'VE HOSTED</p>
+        <p class="text-5xl lg:text-6xl 2xl:text-7xl animated fadeInDown">CHECK OUT SOME EVENTS WE'VE HOSTED</p>
     </div>
 
-    <div class="px-[150px]">
-        <div *ngFor="let image of imageList" class="grid grid-cols-5 gap-10">
-            <img src="{{image.imageUrl}}">
+    <div class="my-20 px-[30px] xl:px-[150px] container m-auto">
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-10">
+            <img *ngFor="let image of imageList" src="{{image}}" class="object-cover w-full h-[150px] sm:h-[200px] xl:h-[300px]">
         </div>
     </div>
 
@@ -14,7 +14,7 @@
 
 
 <ng-template #empty>
-    <div class="px-[30px] xl:px-[150px]">
+    <div class="px-[30px] xl:px-[150px] container auto">
         <div class="flex my-20 items-center justify-center">
             <p class="text-4xl lg:text-5xl 2xl:text-7xl text-center">Coming Soon!</p>
         </div>

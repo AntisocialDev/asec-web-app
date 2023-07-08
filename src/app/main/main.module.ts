@@ -10,6 +10,7 @@ import { ContactComponent } from './contact/contact.component';
 import { GalleriesComponent } from './galleries/galleries.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ParkingComponent } from './parking/parking.component';
+import { BookEventComponent } from './book-event/book-event.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ParkingComponent } from './parking/parking.component';
     ContactComponent,
     GalleriesComponent,
     AboutUsComponent,
-    ParkingComponent
+    ParkingComponent,
+    BookEventComponent,
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,7 @@
 <div>
     <app-navbar (menuOpenEmmiter)="getMenuStatus($event)" [navClicked]="menuOpen"></app-navbar>
     <app-sidebar [menuOpen]="menuOpen" (menuOpenEmmiter)="onMenuChange($event)" class="md:hidden"></app-sidebar>
-    <router-outlet></router-outlet>
+    <main>
+        <router-outlet></router-outlet>
+    </main>
 </div>
