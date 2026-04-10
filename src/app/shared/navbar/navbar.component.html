@@ -1,30 +1,31 @@
 <main class="w-full">
-    <div class="px-5 flex items-center gap-2 bg-black w-full h-[40px]">
-        <a href="https://web.facebook.com/alfredsusan57" target="_blank"><img width="25" alt="facebook image" src="/assets/images/facebook.svg"></a>
-        <a href="https://www.instagram.com/alfredsusaneventcenter_/" target="_blank"><img width="25" alt="instagram image" src="/assets/images/instagram.svg"></a>
+    <div class="bg-[#000000] px-5 flex items-center justify-between gap-2 w-full h-[40px]">
+        <div class="flex items-center gap-3">
+            <a href="https://web.facebook.com/alfredsusan57" target="_blank"><img width="20" alt="facebook image" src="/assets/images/facebook.svg"></a>
+            <a href="https://www.instagram.com/alfredsusaneventcenter_/" target="_blank"><img width="20" alt="instagram image" src="/assets/images/instagram.svg"></a>
+        </div>
     </div>
-    <nav id="navbar" class="z-[999] flex items-center justify-between bg-[#ffffff] w-full h-[85px] px-5 md:p-0" (scroll)="onScroll()" [ngClass]="navbarFixed? 'fixed': 'notfixed'">
-        <img class=" w-[140px] lg:w-[170px] xl:w-[200px] ml-5" src="/assets/logo/logo-no-background.svg">
-        <div id="navbar" class="flex h-full text-center hidden md:flex gap-5 lg:gap-10 list-none font-bold  md:text-sm lg:text-md xl:text-xl nav-links">
-            <li *ngFor="let link of navLinks" [routerLink]="[link.link]" routerLinkActive="active-nav-link">{{link.title}}</li>
-            <button type [routerLink]="['book-event']" class="flex lg:hidden lg:block flex items-center rounded-none bg-[#3F00FF] text-md text-white font-bold h-full p-2">
-                BOOK EVENT
+    <nav id="navbar" class="z-[999] flex items-center justify-between w-full h-[75px] px-5 md:px-8" (scroll)="onScroll()" [ngClass]="navbarFixed? 'fixed': 'notfixed'" style="background-color: var(--bg-primary); border-bottom: 1px solid var(--border-color);">
+        <a routerLink="/main/home"><img src="/assets/logo/logo-no-background.svg" class="w-[130px] lg:w-[160px] xl:w-[190px] cursor-pointer" alt="ASEC Logo"></a>
+        <div class="flex h-full items-center gap-6 lg:gap-8 list-none md:text-sm lg:text-base font-medium nav-links">
+            <li *ngFor="let link of navLinks" [routerLink]="[link.link]" routerLinkActive="active-nav-link" class="py-2">{{link.title}}</li>
+        </div>
+        <div class="flex items-center gap-3">
+            <app-theme-toggle></app-theme-toggle>
+            <button [routerLink]="['/main/book-event']" class="btn-primary text-sm lg:text-base px-4 lg:px-6 py-2.5">
+                Book Event
             </button>
         </div>
-        <button [routerLink]="['book-event']" class="hidden lg:block flex items-center rounded-none bg-[#3F00FF] text-2xl text-white font-bold h-full p-5">
-            BOOK EVENT
-        </button>
         <input type="checkbox" id="ham-menu">
         <label for="ham-menu" class="md:hidden" (click)="onNavClick()">
-                <div class="hide-des">
-                    <span class="menu-line"></span>
-                    <span class="menu-line"></span>
-                    <span class="menu-line"></span>
-                    <span class="menu-line"></span>
-                    <span class="menu-line"></span>
-                    <span class="menu-line"></span>
-                </div>
-            </label>
-
+            <div class="hide-des">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+            </div>
+        </label>
     </nav>
 </main>

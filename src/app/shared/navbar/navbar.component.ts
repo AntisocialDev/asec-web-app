@@ -1,16 +1,19 @@
-import { Component,Input,Output,EventEmitter,OnChanges, HostListener, SimpleChanges } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component,Input,Output,EventEmitter,OnChanges, HostListener, SimpleChanges, OnInit, OnDestroy } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { ThemeService } from '../../core/services/theme.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
-  
+  styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnChanges {
+export class NavbarComponent implements OnChanges, OnInit, OnDestroy {
 
   navbarFixed: boolean = false;
   menuOpen: boolean = false;
+  isDarkMode: boolean = false;
+  private themeSub?: Subscription;
 
   @Output() menuOpenEmmiter: EventEmitter<boolean> = new EventEmitter(); 
   @Input() navClicked: any = false;
@@ -42,7 +45,7 @@ export class NavbarComponent implements OnChanges {
     },
   ]
 
-  constructor(){
+  constructor(private themeService: ThemeService){
   }
 
 
@@ -69,6 +72,18 @@ export class NavbarComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.menuOpen = this.navClicked;
+  }
+
+  ngOnInit(): void {
+    // initialize theme state
+    this.isDarkMode = this.themeService.darkMode();
+    this.themeSub = this.themeService.darkMode$.subscribe((v: boolean) => {
+      this.isDarkMode = v;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.themeSub?.unsubscribe();
   }
   
 }
