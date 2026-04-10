@@ -58,16 +58,39 @@ export class NavbarComponent implements OnChanges, OnInit, OnDestroy {
     }
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(){
+    if(window.innerWidth >= 1024 && this.menuOpen){
+      this.closeMenu();
+    }
+  }
+
+  private closeMenu(){
+    this.menuOpen = false;
+    this.menuOpenEmmiter.emit(this.menuOpen);
+    this.disableScroll(false);
+  }
+
   
 
   onNavClick(){
    if(this.menuOpen){
     this.menuOpen = false;
     this.menuOpenEmmiter.emit(this.menuOpen);
+    this.disableScroll(false);
    }else{
     this.menuOpen = true
     this.menuOpenEmmiter.emit(this.menuOpen);
+    this.disableScroll(true);
    }
+  }
+
+  private disableScroll(disable: boolean){
+    if(disable){
+      document.body.style.overflow = 'hidden';
+    }else{
+      document.body.style.overflow = 'auto';
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {

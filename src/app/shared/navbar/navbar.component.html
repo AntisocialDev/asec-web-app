@@ -4,28 +4,46 @@
             <a href="https://web.facebook.com/alfredsusan57" target="_blank"><img width="20" alt="facebook image" src="/assets/images/facebook.svg"></a>
             <a href="https://www.instagram.com/alfredsusaneventcenter_/" target="_blank"><img width="20" alt="instagram image" src="/assets/images/instagram.svg"></a>
         </div>
+        <a href="tel:+2348033095758" class="text-white text-sm hidden md:block">+2348033095758</a>
     </div>
     <nav id="navbar" class="z-[999] flex items-center justify-between w-full h-[75px] px-5 md:px-8" (scroll)="onScroll()" [ngClass]="navbarFixed? 'fixed': 'notfixed'" style="background-color: var(--bg-primary); border-bottom: 1px solid var(--border-color);">
         <a routerLink="/main/home"><img src="/assets/logo/logo-no-background.svg" class="w-[130px] lg:w-[160px] xl:w-[190px] cursor-pointer" alt="ASEC Logo"></a>
-        <div class="flex h-full items-center gap-6 lg:gap-8 list-none md:text-sm lg:text-base font-medium nav-links">
+        <div class="hidden lg:flex h-full items-center gap-6 lg:gap-8 list-none md:text-sm lg:text-base font-medium nav-links">
             <li *ngFor="let link of navLinks" [routerLink]="[link.link]" routerLinkActive="active-nav-link" class="py-2">{{link.title}}</li>
         </div>
-        <div class="flex items-center gap-3">
+        <div class="hidden lg:flex items-center gap-3">
             <app-theme-toggle></app-theme-toggle>
             <button [routerLink]="['/main/book-event']" class="btn-primary text-sm lg:text-base px-4 lg:px-6 py-2.5">
                 Book Event
             </button>
         </div>
-        <input type="checkbox" id="ham-menu">
-        <label for="ham-menu" class="md:hidden" (click)="onNavClick()">
-            <div class="hide-des">
-                <span class="menu-line"></span>
-                <span class="menu-line"></span>
-                <span class="menu-line"></span>
-                <span class="menu-line"></span>
-                <span class="menu-line"></span>
-                <span class="menu-line"></span>
-            </div>
+        <label for="ham-menu" class="lg:hidden flex flex-col justify-center items-center w-10 h-10 cursor-pointer" (click)="onNavClick()">
+            <span class="block w-6 h-0.5 bg-[#3F00FF] mb-1.5 transition-transform duration-300" [class.rotate-45]="menuOpen" [class.translate-y-2]="menuOpen"></span>
+            <span class="block w-6 h-0.5 bg-[#3F00FF] mb-1.5 transition-opacity duration-300" [class.opacity-0]="menuOpen"></span>
+            <span class="block w-6 h-0.5 bg-[#3F00FF] transition-transform duration-300" [class.-rotate-45]="menuOpen" [class.-translate-y-2]="menuOpen"></span>
         </label>
     </nav>
+    <div class="lg:hidden fixed inset-0 top-[115px] bg-white dark:bg-gray-900 z-[998] transition-opacity duration-300" [class.opacity-0]="!menuOpen" [class.pointer-events-none]="!menuOpen" [class.opacity-100]="menuOpen" style="border-top: 1px solid var(--border-color);">
+        <div class="h-full overflow-y-auto">
+            <ul class="flex flex-col py-8 px-6 gap-4">
+                <li class="flex justify-end lg:hidden pr-2 mb-2">
+                    <button (click)="onNavClick()" class="w-10 h-10 flex items-center justify-center text-2xl font-bold text-[#3F00FF] border-2 border-[#3F00FF] rounded-lg hover:bg-[#3F00FF] hover:text-white transition-colors">
+                        &times;
+                    </button>
+                </li>
+                <li *ngFor="let link of navLinks" [routerLink]="[link.link]" (click)="onNavClick()" routerLinkActive="active-nav-link" class="py-3 px-4 border-b border-[var(--border-color)] text-lg font-medium">
+                    {{link.title}}
+                </li>
+                <li class="py-3 px-4">
+                    <app-theme-toggle></app-theme-toggle>
+                </li>
+                <li class="py-3 px-4">
+                    <button [routerLink]="['/main/book-event']" (click)="onNavClick()" class="btn-primary w-full py-3">
+                        Book Event
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div *ngIf="menuOpen" (click)="onNavClick()" class="fixed inset-0 bg-black bg-opacity-50 z-[997] cursor-pointer"></div>
 </main>
