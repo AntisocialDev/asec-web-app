@@ -7,10 +7,16 @@
             "**/.*",
             "**/node_modules/**"
         ],
-        "rewrites": [{
-            "source": "**",
-            "destination": "/index.html"
-        }]
+        "rewrites": [
+            {
+                "source": "/api/bookings",
+                "function": "createBooking"
+            },
+            {
+                "source": "**",
+                "destination": "/index.html"
+            }
+        ]
     },
     "functions": {
         "source": "functions"

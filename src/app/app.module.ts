@@ -14,6 +14,7 @@ import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -24,6 +25,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),

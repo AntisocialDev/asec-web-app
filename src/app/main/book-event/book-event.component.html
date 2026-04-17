@@ -14,23 +14,29 @@
         <div class="flex flex-col gap-8 my-10">
             <p class="text-3xl lg:text-4xl 2xl:text-5xl py-5 font-semibold border-b-2 w-fit" style="border-color: var(--accent);">EVENT DETAILS</p>
             
-            <form class="flex flex-col gap-6 card p-8">
+            <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-6 card p-8">
+                <div *ngIf="success" class="p-4 mb-4 text-green-700 bg-green-100 rounded">
+                    Booking request submitted successfully! We'll contact you within 24 hours.
+                </div>
+                <div *ngIf="error" class="p-4 mb-4 text-red-700 bg-red-100 rounded">
+                    Something went wrong. Please try again.
+                </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div class="form-control">
                         <label>Full Name *</label>
-                        <input type="text" class="input-field" placeholder="Enter your full name">
+                        <input type="text" formControlName="fullName" class="input-field" placeholder="Enter your full name">
                     </div>
                     <div class="form-control">
-                        <label>Email Address *</label>
-                        <input type="email" class="input-field" placeholder="Enter your email">
+                        <label>Email Address</label>
+                        <input type="email" formControlName="email" class="input-field" placeholder="Enter your email">
                     </div>
                     <div class="form-control">
                         <label>Phone Number *</label>
-                        <input type="tel" class="input-field" placeholder="Enter your phone number">
+                        <input type="tel" formControlName="phone" class="input-field" placeholder="Enter your phone number">
                     </div>
                     <div class="form-control">
                         <label>Event Type *</label>
-                        <select class="input-field">
+                        <select formControlName="eventType" class="input-field">
                             <option value="">Select event type</option>
                             <option value="wedding">Wedding</option>
                             <option value="corporate">Corporate Event</option>
@@ -44,11 +50,11 @@
                     </div>
                     <div class="form-control">
                         <label>Event Date *</label>
-                        <input type="date" class="input-field">
+                        <input type="date" formControlName="eventDate" class="input-field">
                     </div>
                     <div class="form-control">
                         <label>Expected Guests *</label>
-                        <select class="input-field">
+                        <select formControlName="guests" class="input-field">
                             <option value="">Select number of guests</option>
                             <option value="50">Up to 50</option>
                             <option value="100">Up to 100</option>
@@ -58,15 +64,15 @@
                         </select>
                     </div>
                     <div class="form-control col-span-full">
-                        <label>Event Description *</label>
-                        <textarea class="input-field" placeholder="Tell us about your event..."></textarea>
+                        <label>Event Description</label>
+                        <textarea formControlName="description" class="input-field" placeholder="Tell us about your event..."></textarea>
                     </div>
                     <div class="form-control col-span-full">
                         <label>Special Requests</label>
-                        <textarea class="input-field" placeholder="Any special requirements or requests?"></textarea>
+                        <textarea formControlName="specialRequests" class="input-field" placeholder="Any special requirements or requests?"></textarea>
                     </div>
-                    <button type="button" class="btn-primary w-full col-span-full py-3">
-                        Submit Booking Request
+                    <button type="submit" [disabled]="submitted" class="btn-primary w-full col-span-full py-3">
+                        {{ submitted ? 'Submitting...' : 'Submit Booking Request' }}
                     </button>
                 </div>
             </form>

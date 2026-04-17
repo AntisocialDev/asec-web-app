@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
@@ -28,6 +29,7 @@ import { BookEventComponent } from './book-event/book-event.component';
     CommonModule,
     MainRoutingModule,
     SharedModule,
+    ReactiveFormsModule,
   ]
 })
 export class MainModule { }
