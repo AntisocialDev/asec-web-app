@@ -9,10 +9,6 @@
         ],
         "rewrites": [
             {
-                "source": "/api/bookings",
-                "function": "createBooking"
-            },
-            {
                 "source": "**",
                 "destination": "/index.html"
             }

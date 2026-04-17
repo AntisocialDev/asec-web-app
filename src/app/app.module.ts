@@ -15,12 +15,14 @@ import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastComponent } from './shared/toast/toast.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,

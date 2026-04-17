@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Firestore, collection, addDoc, serverTimestamp } from '@angular/fire/firestore';
+import { ToastService } from '../../core/services/toast.service';
 
 @Component({
   selector: 'app-book-event',
@@ -10,17 +11,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class BookEventComponent {
   bookingForm: FormGroup;
   submitted = false;
-  success = false;
-  error = false;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private firestore: Firestore, private toastService: ToastService) {
     this.bookingForm = this.fb.group({
       fullName: ['', Validators.required],
       email: [''],
       phone: ['', Validators.required],
       eventType: ['', Validators.required],
       eventDate: ['', Validators.required],
-      guests: ['', Validators.required],
+      expectedGuests: ['', Validators.required],
+      status: ['pending'],
       description: [''],
       specialRequests: ['']
     });
@@ -28,23 +28,26 @@ export class BookEventComponent {
 
   onSubmit() {
     this.submitted = true;
-    this.error = false;
-    this.success = false;
 
     if (this.bookingForm.invalid) {
+      this.submitted = false;
       return;
     }
 
-    this.http.post('/api/bookings', this.bookingForm.value).subscribe({
-      next: () => {
-        this.success = true;
+    const bookingData = {
+      ...this.bookingForm.value,
+      createdAt: serverTimestamp()
+    };
+
+    addDoc(collection(this.firestore, 'bookings'), bookingData)
+      .then(() => {
+        this.toastService.show('Booking request submitted! We\'ll contact you within 24 hours.', 'success');
         this.submitted = false;
-        this.bookingForm.reset();
-      },
-      error: () => {
-        this.error = true;
+        this.bookingForm.reset({ status: 'pending' });
+      })
+      .catch(() => {
+        this.toastService.show('Something went wrong. Please try again.', 'error');
         this.submitted = false;
-      }
-    });
+      });
   }
 }
