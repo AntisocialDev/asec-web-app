@@ -1,9 +1,48 @@
 import * as functions from "firebase-functions";
+import * as admin from "firebase-admin";
 
-// // Start writing functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+admin.initializeApp();
+
+export const createBooking = functions.https.onRequest(async (request, response) => {
+  functions.logger.info("Creating booking", { structuredData: true });
+
+  if (request.method !== "POST") {
+    response.status(405).send("Method Not Allowed");
+    return;
+  }
+
+  const {
+    fullName,
+    email,
+    phone,
+    eventType,
+    eventDate,
+    guests,
+    description,
+    specialRequests,
+  } = request.body;
+
+  if (!fullName || !phone || !eventType || !eventDate || !guests) {
+    response.status(400).send("Missing required fields");
+    return;
+  }
+
+  try {
+    const docRef = await admin.firestore().collection("bookings").add({
+      fullName,
+      email: email || null,
+      phone,
+      eventType,
+      eventDate,
+      guests,
+      description: description || null,
+      specialRequests: specialRequests || null,
+      createdAt: admin.firestore.FieldValue.serverTimestamp(),
+    });
+
+    response.status(200).json({ id: docRef.id, message: "Booking created successfully" });
+  } catch (error) {
+    functions.logger.error("Error creating booking", error);
+    response.status(500).send("Internal Server Error");
+  }
+});
